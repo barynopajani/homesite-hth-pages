@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>华体会 · 导航介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f2f4f6;
+      color: #2c3e50;
+      line-height: 1.6;
+      padding-top: 60px;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      z-index: 100;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      border-bottom: 1px solid #e6eaef;
+    }
+
+    .top-bar .logo {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #1a2633;
+      letter-spacing: 0.5px;
+    }
+
+    .top-bar .logo span {
+      color: #3f6b9c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3d4e62;
+      font-size: 0.9rem;
+      font-weight: 450;
+      transition: color 0.2s;
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover {
+      color: #1f2a36;
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 20px 24px 60px;
+    }
+
+    /* Hero */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 48px 40px;
+      margin-bottom: 36px;
+      border: 1px solid #e1e6ed;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      text-align: center;
+    }
+
+    .hero-card h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1e2a36;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-card p {
+      font-size: 1.05rem;
+      color: #4b5d70;
+      max-width: 640px;
+      margin: 0 auto 20px;
+    }
+
+    .hero-card .highlight {
+      background: #f0f3f8;
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2a4a6e;
+      border: 1px solid #d9e1ec;
+    }
+
+    /* 场景模块 */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #1f2b38;
+      margin: 40px 0 18px 0;
+      padding-left: 4px;
+      border-left: 4px solid #7b9bc2;
+      padding-left: 16px;
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 28px 22px;
+      border: 1px solid #e3e9f0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+      transition: all 0.15s ease;
+    }
+
+    .scene-card:hover {
+      border-color: #cbd5e3;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #253545;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scene-card h3 .badge {
+      background: #e6edf5;
+      font-size: 0.7rem;
+      padding: 2px 10px;
+      border-radius: 30px;
+      color: #2c4b6e;
+    }
+
+    .scene-card p {
+      color: #465a6d;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .card-footer {
+      font-size: 0.85rem;
+      color: #67839f;
+      border-top: 1px solid #edf1f7;
+      padding-top: 14px;
+      margin-top: 6px;
+    }
+
+    .card-footer a {
+      color: #3a5f84;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #bcccdb;
+    }
+
+    .card-footer a:hover {
+      border-bottom: 1px solid #2a4a6e;
+    }
+
+    /* 说明 / FAQ */
+    .notice-box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px 32px 28px;
+      border: 1px solid #e0e6ef;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+      margin: 40px 0 20px;
+    }
+
+    .notice-box h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #1b2a3a;
+      margin-bottom: 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #edf2f8;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item .q {
+      font-weight: 550;
+      color: #1d2d3e;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-item .q::before {
+      content: "▹";
+      color: #6a8bb0;
+      font-weight: 300;
+    }
+
+    .faq-item .a {
+      color: #4f657b;
+      font-size: 0.95rem;
+      padding-left: 22px;
+    }
+
+    .faq-item .a a {
+      color: #3a5f84;
+      text-decoration: none;
+      border-bottom: 1px dotted #b5c9de;
+    }
+
+    .faq-item .a a:hover {
+      border-bottom: 1px solid #1f3a57;
+    }
+
+    .meta-note {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #6c7e93;
+      background: #f6f9fe;
+      padding: 14px 20px;
+      border-radius: 40px;
+      display: inline-block;
+      border: 1px solid #e2ebf5;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .top-bar {
+        padding: 0 16px;
+      }
+      .nav-links {
+        gap: 14px;
+      }
+      .hero-card {
+        padding: 32px 20px;
+      }
+      .hero-card h1 {
+        font-size: 1.6rem;
+      }
+      .notice-box {
+        padding: 22px 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+        padding-left: 12px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 16px 20px;
+      color: #6a7f95;
+      font-size: 0.85rem;
+      border-top: 1px solid #e1e8f0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header class="top-bar">
+    <div class="logo"><span>华</span>体会<span> ·</span> 导航</div>
+    <ul class="nav-links">
+      <li><a href="#intro">介绍</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">说明</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero / 核心介绍 -->
+    <section class="hero-card" id="intro">
+      <h1>稳定入口 · 页面说明</h1>
+      <p>
+        日常访问中，一个清晰、可靠的起点能省去许多反复查找的麻烦。
+        <strong><a href="https://homesite-hth.com.cn" style="color:#2a4a6e; text-decoration:underline; text-underline-offset: 3px; font-weight:500;">华体会</a></strong>
+        始终作为指向主要页面的固定地址，不额外跳转，保持浏览路径的简洁。
+      </p>
+      <div class="highlight">轻量入口 · 直接定位</div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <h2 class="section-title" id="scenes">常见使用场景</h2>
+    <div class="scene-grid">
+      <div class="scene-card">
+        <h3>📋 信息查阅 <span class="badge">日常</span></h3>
+        <p>
+          通过统一地址快速到达内容页面，避免因链接变动或临时页面带来的不便。适合日常浏览与回顾。
+        </p>
+        <div class="card-footer">
+          关联 · <a href="https://homesite-hth.com.cn">华体会</a>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <h3>🔄 页面回溯 <span class="badge">稳定</span></h3>
+        <p>
+          需要重复访问某个板块时，使用固定入口能减少多余操作。架构简单，适合长期收藏与习惯性使用。
+        </p>
+        <div class="card-footer">
+          固定指向 · <a href="https://homesite-hth.com.cn">华体会</a>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <h3>🧩 功能引导 <span class="badge">轻量</span></h3>
+        <p>
+          对于新接触的用户，一个直接的链接避免层层跳转。页面结构清晰，能够快速了解内容分布。
+        </p>
+        <div class="card-footer">
+          直接访问 · <a href="https://homesite-hth.com.cn">华体会</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <section class="notice-box" id="faq">
+      <h2>常见说明</h2>
+
+      <div class="faq-item">
+        <div class="q">链接的定位是什么？</div>
+        <div class="a">
+          <a href="https://homesite-hth.com.cn">华体会</a> 作为导航式的固定页面，不涉及功能跳转，仅提供一致的访问入口与基础信息预览。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q">页面内容会频繁变动吗？</div>
+        <div class="a">
+          结构保持稳定，内容部分会根据需要做适度更新。主要目的是让访问者每次都能获得一致的体验，减少迷路感。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q">为什么选择这样的布局？</div>
+        <div class="a">
+          采用分区卡片与柔和的浅色背景是为了降低视觉负担，使信息层级一目了然。细边框与阴影增强了内容的区分度，同时保持干净。
+        </div>
+      </div>
+
+      <div class="meta-note">
+        ⚡ 稳定入口 · 页面说明 · 无多余跳转
+      </div>
+    </section>
+
+    <footer>
+      华体会 · 导航说明页 &mdash; 保持简洁与直接
+    </footer>
+
+  </main>
+
+</body>
+</html>
