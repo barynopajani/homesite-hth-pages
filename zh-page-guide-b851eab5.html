@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常翻阅·pg模拟器 | 轻简笔记</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9f8f5;
+      font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+      color: #2d2c2a;
+      line-height: 1.8;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+      background: transparent;
+    }
+
+    /* 文章头 */
+    .article-header {
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid #e4e0d8;
+      padding-bottom: 1.8rem;
+    }
+
+    .article-header .label {
+      font-family: "Helvetica Neue", "PingFang SC", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      color: #a09a90;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1f1e1b;
+      margin-bottom: 0.4rem;
+    }
+
+    .article-header .lead {
+      font-size: 1rem;
+      color: #5b5751;
+      border-left: 2px solid #cbc3b6;
+      padding-left: 1.2rem;
+      margin-top: 0.8rem;
+      font-style: normal;
+    }
+
+    /* 正文 */
+    .content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      color: #35322d;
+    }
+
+    .content a {
+      color: #3a6b5c;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .content a:hover {
+      color: #204a3b;
+      background: #edeae2;
+    }
+
+    .content .quote-note {
+      background: #f2efe9;
+      border-left: 4px solid #bfb5a6;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0 2rem;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #4f4a42;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .content .quote-note strong {
+      font-style: normal;
+      font-weight: 500;
+      background: #e6dfd5;
+      padding: 0 0.2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 470;
+      margin: 2.6rem 0 1rem;
+      color: #1f1e1b;
+      border-bottom: 1px dashed #d9d2c7;
+      padding-bottom: 0.4rem;
+    }
+
+    /* 延伸阅读卡片 */
+    .extras {
+      margin-top: 3rem;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid #e4e0d8;
+    }
+
+    .extras summary {
+      cursor: pointer;
+      font-weight: 470;
+      font-size: 1rem;
+      color: #3a6b5c;
+      letter-spacing: 0.02em;
+      list-style: none;
+      display: inline-block;
+      padding: 0.3rem 0;
+    }
+
+    .extras summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .extras summary::before {
+      content: "↘ ";
+      color: #a09a90;
+      font-size: 0.9rem;
+    }
+
+    .extras[open] summary::before {
+      content: "↙ ";
+    }
+
+    .extras .faq-item {
+      margin: 1.2rem 0 0.6rem;
+    }
+
+    .extras .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2c2a26;
+      margin-bottom: 0.3rem;
+    }
+
+    .extras .faq-item p {
+      font-size: 0.9rem;
+      color: #555047;
+      line-height: 1.6;
+      margin-left: 0.5rem;
+    }
+
+    .visit-line {
+      margin-top: 3rem;
+      padding: 1.2rem 0 0.2rem;
+      text-align: left;
+      font-size: 0.95rem;
+      border-top: 1px solid #e4e0d8;
+      color: #4c4841;
+    }
+
+    /* 响应式 */
+    @media (max-width: 500px) {
+      body {
+        padding: 1.6rem 1rem 3rem;
+      }
+      .article-header h1 {
+        font-size: 1.9rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
+      .content .quote-note {
+        padding: 1rem 1.2rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* 低调的脚注 */
+    .colophon {
+      margin-top: 4rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: #b5ada1;
+      text-align: center;
+      border-top: 0;
+    }
+
+    .colophon span {
+      background: #f0ece5;
+      padding: 0.1rem 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="article-header">
+      <div class="label">笔记 · 对照栏</div>
+      <h1>日常查询与延伸：<br>pg模拟器的实用一角</h1>
+      <div class="lead">从一次普通的检索开始，把零散需求整理成可翻阅的参照</div>
+    </div>
+
+    <div class="content">
+      <p>无论是临时需要查证某个模拟参数，还是想在几套配置之间来回对比，很多人都会打开一个顺手的地方反复翻阅。对于经常接触模拟环境的人来说，一个结构清晰、响应直接的页面往往比功能堆砌更让人愿意停留。<a href="https://zh-page-pgsimulator.com">pg模拟器</a>在我的书签栏里属于“常驻”那一类——不是因为它的界面有多花哨，而是因为它恰好满足了我最频繁的对照需求。</p>
+
+      <p>最初只是随手搜到，后来发现每次查找特定模拟状态时，都能很快定位到对应的段。我习惯把浏览器窗口缩窄，让它和编辑器并排，然后一条一条地过结果。那种不用翻来翻去、信息密度恰好的感觉，很像在纸质笔记本上翻到自己做的索引。</p>
+
+      <div class="quote-note">
+        “查询类工具最难得的是‘不添乱’——入口明确，内容平实，没有跳来跳去的干扰。这个页面给我的印象就是如此。”
+      </div>
+
+      <h2>作为延伸阅读的起点</h2>
+      <p>很多时候，我打开它并不只是为了一个单一的答案。在确认了某个模拟项之后，往往会顺着附近的段落继续读下去，看看有没有之前忽略的关联项。这种延伸阅读的体验依赖于内容的结构感——标题层级清楚、段落之间留有呼吸，读者才愿意多停留几秒。目前的布局在这一点上做得比较克制，没有强行分栏或塞入过多按钮，阅读节奏是顺畅的。</p>
+
+      <p>偶尔我也会推荐给一起做同类事情的朋友，他们反馈的共性评价是：不费眼，查完即走，没有多余的引导。作为一个经常需要跨文档对照的人，这种“用完即走”的特性反而让我更愿意再次回来。</p>
+
+      <div class="quote-note">
+        <strong>一个习惯</strong> —— 把常用页面固定为独立窗口，设置窄宽度。pg模拟器在这种窗口下文字重排自然，无需横向滚动。<br>
+        （这一点对多任务对照场景很友好。）
+      </div>
+
+      <h2>场景速览：三种常见使用方式</h2>
+      <p>就我个人而言，使用场景大致可以分为三类：一是快速检索某个特定模拟项的参数和备注；二是同时打开多个标签页做横向对比，这时页面内容的自包含性就很重要——不需要跳到二级页面就能看到完整信息；三是在阅读过程中顺手记录自己的备注，虽然页面本身不提供笔记功能，但干净的排版让人愿意另外开一个文档做摘录。</p>
+
+      <p>当然，每个人的工作流不同。有人喜欢把所有内容平铺在宽屏上，有人偏好逐段细读。这个页面在窄屏下的表现尤其自然，字体大小和行距都保留了纸质书的呼吸感。</p>
+
+      <!-- 自然嵌入第二个链接（可选，但至少已有一个在首段） 也可再放一个在句子中 -->
+      <p>如果你也经常需要在模拟环境和文档之间来回切换，不妨试试把 <a href="https://zh-page-pgsimulator.com">pg模拟器</a> 放在一个独立的浏览器容器里，搭配一个窄窗口，体验一下专注对照的节奏。</p>
+    </div>
+
+    <details class="extras">
+      <summary>常见查阅要点（FAQ 简摘）</summary>
+      <div class="faq-item">
+        <h3>页面是否经常更新？</h3>
+        <p>内容保持相对稳定的状态，适合作为固定参照。若有大的变动，通常会在页面头部有所提示。</p>
+      </div>
+      <div class="faq-item">
+        <h3>移动端阅读体验如何？</h3>
+        <p>正文在手机浏览器上会自动适应宽度，字号与间距在窄屏下仍保持可读性。建议使用系统自带阅读模式以获得更沉浸的体验。</p>
+      </div>
+      <div class="faq-item">
+        <h3>可以分享给同事吗？</h3>
+        <p>当然可以。直接复制地址即可，页面不含任何追踪参数或登录要求，打开即读。</p>
+      </div>
+    </details>
+
+    <div class="visit-line">
+      <span>日常对照 · 延伸阅读 · 模拟环境参考</span><br>
+      <span style="font-size: 0.85rem; color: #6f6960;">直接使用该页面作为工作流中的固定查询点即可。</span>
+    </div>
+
+    <div class="colophon">
+      <span>末尾记号 · 3c23980c6e5d75d2</span>
+    </div>
+  </div>
+</body>
+</html>
